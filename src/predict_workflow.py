@@ -23,6 +23,7 @@ def pipeline(batch: str, model: str):
             "dataset": prepare_dataset_run.outputs["test_dataset"],
         },
         params={
-            "model": model, "perform_drift_analysis": True,
+            "model": model,
+            "perform_drift_analysis": True,
         },
     ).after(prepare_dataset_run)

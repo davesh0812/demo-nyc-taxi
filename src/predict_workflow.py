@@ -19,11 +19,6 @@ def pipeline(batch: str, model: str):
     # batch
     project.run_function(
         function="hub://batch_inference",
-        inputs={
-            "dataset": prepare_dataset_run.outputs["test_dataset"],
-        },
-        params={
-            "model": model,
-            "perform_drift_analysis": True,
-        },
+        inputs={"dataset": prepare_dataset_run.outputs["test_dataset"],},
+        params={"model": model, "perform_drift_analysis": True,},
     ).after(prepare_dataset_run)
